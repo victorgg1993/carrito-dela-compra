@@ -2,70 +2,138 @@
 // pinta los productos en stock al HTML
 function print_productos_stock(arr_productos_stock) {
 
-    // no es definitivo
+    // <li> de cada producto en stock
     let padre = document.getElementById('ul_productos_stock');
 
     for (let i = 0; i < arr_productos_stock.length; i++) {
 
-        let elemento = arr_productos_stock[i];
+        let datos = { // con esta estructura de datos solamente pasamos un parámetro, es más flexible
+            padre: padre,
+            elemento: arr_productos_stock[i],
+            id_input: i,
+            id_boton: i,
+            texto_btn: "Eliminar",
+            lstn_in: listener_input_cantidad,
+            lstn_btn: listener_boton_eliminar
+        };
 
-        // <li>
-        let lista = document.createElement('li');
-        padre.appendChild(lista);
-
-        // título
-        let titulo = document.createElement('h1');
-        titulo.innerText = elemento.name;
-        lista.appendChild(titulo);
-
-        // casilla de precio por unidad
-        let precio = document.createElement('p');
-        precio.innerText = `precio ${elemento.price}€`;
-        lista.appendChild(precio);
-
-        // casilla (editable) de cantidad
-        // cantidad: <input type="text" placeholder="Cantidad" value="${elemento.quantity}">
-        let casilla_cantidad = document.createElement('input');
-        casilla_cantidad.id = i;
-        casilla_cantidad.placeholder = "Cantidad";
-        casilla_cantidad.value = elemento.quantity;
-        lista.appendChild(casilla_cantidad);
-        casilla_cantidad.addEventListener('change', listener_input_cantidad);
-
-        // casilla precio final
-        let precio_total = document.createElement('p');
-        precio_total.innerText = ` ${(elemento.price * elemento.quantity).toFixed(2)}€`;
-        lista.appendChild(precio_total);
-
-        // botón eliminar
-        let boton_eliminar = document.createElement('button');
-        boton_eliminar.id = i;
-        boton_eliminar.innerText = "Eliminar";
-        lista.appendChild(boton_eliminar);
-        boton_eliminar.addEventListener('click', listener_boton_eliminar);
+        pintar_li_producto_stock(datos);
     }
+
+    // <li> añadir nuevo producto
+    let datos = {  // con esta estructura de datos solamente pasamos un parámetro, es más flexible
+        padre: padre,
+        elemento: { name: "nombre producto", price: 0, quantity: 0 },
+        texto_btn: "Añadir",
+        lstn_in: listener_input_cantidad_add,
+        lstn_btn: listener_boton_add
+    };
+
+    pintar_li_producto_stock(datos); // <li> para añadir un producto
+}
+
+// Done. Pinta una <li> de producto en stock o un <li> para añadir producto en stock
+// mediante el objeto "datos" eliges su comportamiento.
+// Mirar el contenido de print_productos_stock()
+function pintar_li_producto_stock(datos) {
+
+    // <li>
+    let lista = document.createElement('li');
+    datos.padre.appendChild(lista);
+
+    switch (datos.texto_btn) { // Nombre producto
+
+        case 'Añadir':  // Si es añadir, el nombre se puede cambiar
+            let casilla_nombre = document.createElement('input');
+            casilla_nombre.placeholder = "Nombre producto";
+            lista.appendChild(casilla_nombre);
+            break;
+
+        case 'Eliminar': // Si es eliminar, el nombre no se cambia
+            let titulo = document.createElement('h1');
+            titulo.innerText = datos.elemento.name;
+            lista.appendChild(titulo);
+            break;
+    }
+
+    switch (datos.texto_btn) {  // casilla de precio por unidad
+
+        case 'Añadir':  // Si es añadir, el precio es editable
+            let in_precio = document.createElement('input');
+            in_precio.placeholder = "Precio €";
+            lista.appendChild(in_precio);
+            break;
+
+        case 'Eliminar': // Si es eliminar, el precio no es editable
+            let precio = document.createElement('p');
+            precio.innerText = `precio ${datos.elemento.price}€`;
+            lista.appendChild(precio);
+            break;
+    }
+
+    // casilla (editable) de cantidad
+    let casilla_cantidad = document.createElement('input');
+    casilla_cantidad.id = datos.id_input;
+    casilla_cantidad.placeholder = "Cantidad";
+
+    if (datos.texto_btn == 'Eliminar') {
+        casilla_cantidad.value = datos.elemento.quantity;
+    }
+    lista.appendChild(casilla_cantidad);
+    casilla_cantidad.addEventListener('change', datos.lstn_in);
+
+
+    // casilla precio final
+    let precio_total = document.createElement('p');
+    precio_total.innerText = ` ${(datos.elemento.price * datos.elemento.quantity).toFixed(2)}€`;
+    lista.appendChild(precio_total);
+
+    // botón eliminar
+    let boton_eliminar = document.createElement('button');
+    boton_eliminar.id = datos.id_boton;
+    boton_eliminar.innerText = datos.texto_btn;
+    lista.appendChild(boton_eliminar);
+    boton_eliminar.addEventListener('click', datos.lstn_btn);
+}
+
+// No usar
+function listener_input_cantidad_add() { } // No usar
+
+// To - do
+function listener_boton_add() {
+    console.log("Botón añadir pulsado!");
 }
 
 // To - do
 function listener_boton_eliminar(evento_boton) {
     let id_boton = evento_boton.explicitOriginalTarget.id;
 
-    console.log("ID botón: ", id_boton );
+    console.log("ID botón: ", id_boton);
 }
 
 // To - do
 function listener_input_cantidad(evento_input) {
     let id_input = evento_input.explicitOriginalTarget.id;
 
-    console.log("Input box: ", id_input );
+    console.log("Input box: ", id_input);
+}
+
+// To - do
+function listener_add_producto_stock() {
+    //let objeto_producto = leer_producto_stock();
 }
 
 
 
 // To - do
-function add_productos_stock(arr_productos_stock, producto) {
+function leer_producto_stock() {
+    return 0;
 }
 
 // To - do
-function remove_productos_stock(arr_productos_stock) {
+function add_producto_stock(arr_productos_stock, producto) {
+}
+
+// To - do
+function remove_producto_stock(arr_productos_stock) {
 }
