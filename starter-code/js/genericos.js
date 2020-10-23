@@ -17,8 +17,26 @@ function print_elemento(padre, hijo, contenido) { // acabará siendo borrado
     objeto_padre.appendChild(objeto_hijo);
 }
 
+// Done
+function pintar_article(titulo, id_ul) {
+    let objeto_body = document.querySelector('body');
+    let objeto_article = document.createElement('article');
+
+    let _h1 = document.createElement('h1');
+    _h1.innerText = titulo;
+    objeto_article.appendChild(_h1);
+
+    let seccion = document.createElement('section');
+    objeto_article.appendChild(seccion);
+
+    let _ul = document.createElement('ul');
+    _ul.id = id_ul;
+    seccion.appendChild(_ul);
+
+    objeto_body.appendChild(objeto_article);
+}
 
 // To - do ( los usará el vendedor y el manager para ordenar los productos)
-function sort_producto(){
+function sort_producto() {
 
 }
