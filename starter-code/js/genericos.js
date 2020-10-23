@@ -9,7 +9,7 @@
 // en el elemento padre ( padre = ul, por ejemplo )
 // con el contenido que le das ( contenido = '<button>Soy un botón</button>')
 
-function print_elemento(padre, hijo, contenido) {
+function print_elemento(padre, hijo, contenido) { // acabará siendo borrado
     let objeto_padre = document.getElementById(padre);
 
     let objeto_hijo = document.createElement(hijo);
