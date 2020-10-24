@@ -38,7 +38,7 @@ function pintar_li_producto_stock(datos) {
 
     // <li>
     let lista = document.createElement('li');
-    lista.id = datos.id;
+    lista.id = 'li_producto_stock_' + datos.id;
     datos.padre.appendChild(lista);
 
     switch (datos.texto_btn) { // Nombre producto
@@ -114,26 +114,28 @@ function listener_boton_add() {
 function listener_boton_eliminar(evento_boton) {
     console.log("debug: btn eliminar");
     let id_boton = evento_boton.explicitOriginalTarget.id;
+    id_boton = id_boton.replace(/^\D+/g, '');
+
+    console.log("asd: ", `li_producto_stock_${id_boton}`);
+
+    document.getElementById(`li_producto_stock_${id_boton}`).remove(); // rm <li>
+
     objeto_JSON.splice(id_boton, 1);
-    /* Funciona solo la primera vez porque luego el ID del boton no coincide con el indice del producto en la array
-    let child = document.getElementById("ul_productos_stock").getElementsByTagName("li")[id_boton];
-    document.getElementById("ul_productos_stock").removeChild(child);
-    */
+    console.log("objeto json: ", objeto_JSON);
+    
 }
 
 // To - do
 function listener_input_cantidad(evento_input) {
 
-    let id_input = evento_input.explicitOriginalTarget.id;
-    id_input = id_input.replace(/^\D+/g, '');
+    let id_input = evento_input.explicitOriginalTarget.id.replace(/^\D+/g, '');
     objeto_JSON[id_input].quantity = parseInt(evento_input.explicitOriginalTarget.value);
 
     // pintar de nuevo
-    let objeto_precio = document.getElementById(`p_precio_${id_input}`);
+    let asd = document.getElementById(`p_precio_${id_input}`).innerText;
     let objeto_input = document.getElementById(`input_cantidad_${id_input}`);
-    let asd = objeto_precio.innerText;
 
-    asd = objeto_precio.innerText.replace('€', '').replace(/^\D+/g, '');
+    asd = asd.replace('€', '').replace(/^\D+/g, '');
 
     let precio_nuevo = (asd * objeto_input.value);
     document.getElementById(`p_total_${id_input}`).innerText = `Total: ${precio_nuevo.toFixed(2)}€`
