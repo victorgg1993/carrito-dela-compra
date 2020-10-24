@@ -1,4 +1,3 @@
-
 // pinta los productos en stock al HTML
 function print_productos_stock(arr_productos_stock) {
 
@@ -21,7 +20,7 @@ function print_productos_stock(arr_productos_stock) {
     }
 
     // <li> añadir nuevo producto
-    let datos = {  // con esta estructura de datos solamente pasamos un parámetro, es más flexible
+    let datos = { // con esta estructura de datos solamente pasamos un parámetro, es más flexible
         padre: padre,
         elemento: { name: "nombre producto", price: 0, quantity: 0 },
         texto_btn: "Añadir",
@@ -43,7 +42,7 @@ function pintar_li_producto_stock(datos) {
 
     switch (datos.texto_btn) { // Nombre producto
 
-        case 'Añadir':  // Si es añadir, el nombre se puede cambiar
+        case 'Añadir': // Si es añadir, el nombre se puede cambiar
             let casilla_nombre = document.createElement('input');
             casilla_nombre.placeholder = "Nombre producto";
             lista.appendChild(casilla_nombre);
@@ -56,9 +55,9 @@ function pintar_li_producto_stock(datos) {
             break;
     }
 
-    switch (datos.texto_btn) {  // casilla de precio por unidad
+    switch (datos.texto_btn) { // casilla de precio por unidad
 
-        case 'Añadir':  // Si es añadir, el precio es editable
+        case 'Añadir': // Si es añadir, el precio es editable
             let in_precio = document.createElement('input');
             in_precio.placeholder = "Precio €";
             lista.appendChild(in_precio);
@@ -97,7 +96,7 @@ function pintar_li_producto_stock(datos) {
 }
 
 // No usar
-function listener_input_cantidad_add() { } // No usar
+function listener_input_cantidad_add() {} // No usar
 
 // To - do
 function listener_boton_add() {
@@ -107,15 +106,30 @@ function listener_boton_add() {
 // To - do
 function listener_boton_eliminar(evento_boton) {
     let id_boton = evento_boton.explicitOriginalTarget.id;
-
-    console.log("ID botón: ", id_boton);
+    objeto_JSON.splice(id_boton, 1);
+    /* Funciona solo la primera vez porque luego el ID del boton no coincide con el indice del producto en la array
+    let child = document.getElementById("ul_productos_stock").getElementsByTagName("li")[id_boton];
+    document.getElementById("ul_productos_stock").removeChild(child);
+    */
 }
 
 // To - do
 function listener_input_cantidad(evento_input) {
+    console.log("input listener");
     let id_input = evento_input.explicitOriginalTarget.id;
+    objeto_JSON[id_input].quantity = parseInt(evento_input.explicitOriginalTarget.value);
+    /*
+        let padre = document.getElementById('ul_productos_stock');
+        let datos = { // con esta estructura de datos solamente pasamos un parámetro, es más flexible
+            padre: padre,
+            elemento: { name: "nombre producto", price: 0, quantity: 0 },
+            texto_btn: "Añadir",
+            lstn_in: listener_input_cantidad_add,
+            lstn_btn: listener_boton_add
+        };
 
-    console.log("Input box: ", id_input);
+        pintar_li_producto_stock(datos);
+    */
 }
 
 // To - do
@@ -132,8 +146,10 @@ function leer_producto_stock() {
 
 // To - do
 function add_producto_stock(arr_productos_stock, producto) {
+    arr_productos_stock.push(producto);
 }
 
 // To - do
 function remove_producto_stock(arr_productos_stock) {
+
 }
