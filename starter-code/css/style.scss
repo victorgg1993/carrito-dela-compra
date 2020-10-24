@@ -1,62 +1,36 @@
-input {
-  border: solid 1px black;
-}
+#ul_productos_stock {
+  display: flex;
+  flex-flow: column;
+  border: 1px solid red;
 
-.container {
+  li {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid green;
 
-}
+    h1 {
+      width: 20em;
+      font-size: 15px;
+    }
 
-.info-container {
+    p {
+      margin: 0em 2em 0em 3em;
+      width: 10em;
+    }
 
-}
+    input {
+      width: 4em;
+    }
 
-.item {
+    button {
+      margin: 0em 2em 0em 3em;
+    }
 
-}
-
-.row {
-
-}
-
-
-.btn {
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-
-.btn-success {
-    color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
-}
-
-.btn-delete {
-    color: #fff;
-    background-color: #CF000F;
-    border-color: #CF000F;
-}
-
-.quantity {
-  margin: 0 5px;
-}
-
-article{
-  border: 1px solid black; /*debug*/
+    div {
+      display: flex;
+      border: 1px solid rgb(216, 255, 74);
+    }
+  }
 }
