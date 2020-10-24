@@ -12,7 +12,7 @@ function print_productos_stock(arr_productos_stock) {
             id: i,
             texto_btn: "Eliminar",
             lstn_in: listener_input_cantidad,
-            lstn_btn: listener_boton_eliminar
+            lstn_btn: listener_boton_eliminar_producto_stock
         };
 
         pintar_li_producto_stock(datos);
@@ -23,9 +23,9 @@ function print_productos_stock(arr_productos_stock) {
         padre: padre,
         elemento: { name: "nombre producto", price: 0, quantity: 0 },
         texto_btn: "Añadir",
-        id_p: "add",
+        id: 0,
         lstn_in: listener_input_cantidad_add,
-        lstn_btn: listener_boton_add
+        lstn_btn: listener_add_producto_stock
     };
 
     pintar_li_producto_stock(datos); // <li> para añadir un producto
@@ -46,6 +46,7 @@ function pintar_li_producto_stock(datos) {
         case 'Añadir': // Si es añadir, el nombre se puede cambiar
             let casilla_nombre = document.createElement('input');
             casilla_nombre.placeholder = "Nombre producto";
+            lista.id = 'input_producto_stock_' + datos.id;
             lista.appendChild(casilla_nombre);
             break;
 
@@ -95,34 +96,34 @@ function pintar_li_producto_stock(datos) {
     lista.appendChild(precio_total);
 
     // botón eliminar
-    let boton_eliminar = document.createElement('button');
-    boton_eliminar.id = ("button_eliminar_" + datos.id);
-    boton_eliminar.innerText = datos.texto_btn;
-    lista.appendChild(boton_eliminar);
-    boton_eliminar.addEventListener('click', datos.lstn_btn);
+    let boton_add_o_eliminar = document.createElement('button');
+
+    if (datos.texto_btn == 'Eliminar') {
+        boton_add_o_eliminar.id = ("button_eliminar_" + datos.id);
+    }
+    else{
+        boton_add_o_eliminar.id = ("button_add_" + datos.id);
+    }
+    boton_add_o_eliminar.innerText = datos.texto_btn;
+    lista.appendChild(boton_add_o_eliminar);
+    boton_add_o_eliminar.addEventListener('click', datos.lstn_btn);
 }
 
 // No usar
 function listener_input_cantidad_add() { } // No usar
 
 // To - do
-function listener_boton_add() {
+function listener_add_producto_stock() {
     console.log("Botón añadir pulsado!");
 }
 
 // To - do
-function listener_boton_eliminar(evento_boton) {
-    console.log("debug: btn eliminar");
+function listener_boton_eliminar_producto_stock(evento_boton) {
     let id_boton = evento_boton.explicitOriginalTarget.id;
     id_boton = id_boton.replace(/^\D+/g, '');
 
-    console.log("asd: ", `li_producto_stock_${id_boton}`);
-
     document.getElementById(`li_producto_stock_${id_boton}`).remove(); // rm <li>
-
     objeto_JSON.splice(id_boton, 1);
-    console.log("objeto json: ", objeto_JSON);
-    
 }
 
 // To - do
@@ -140,13 +141,6 @@ function listener_input_cantidad(evento_input) {
     let precio_nuevo = (asd * objeto_input.value);
     document.getElementById(`p_total_${id_input}`).innerText = `Total: ${precio_nuevo.toFixed(2)}€`
 }
-
-// To - do
-function listener_add_producto_stock() {
-    //let objeto_producto = leer_producto_stock();
-}
-
-
 
 // To - do
 function leer_producto_stock() {
