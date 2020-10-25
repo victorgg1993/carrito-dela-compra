@@ -1,0 +1,16 @@
+#ul_productos_tienda {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+
+  li {
+    display: flex;
+    flex-flow: column;
+    margin-right: 2em;
+    
+
+    h2 {
+      background-color: violet;
+    }
+  }
+}

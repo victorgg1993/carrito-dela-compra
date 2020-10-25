@@ -6,11 +6,18 @@ function print_productos_tienda(arr_productos_tienda) {
 
     let contenido_list =
         `<h2>título producto</h2>
-    <img src="" alt="">
-    <input type="text" placeholder="Unidades">
+    <img src="" alt="imagen producto">
+    <input placeholder="cantidad"></input>
+    <p>Unicades: xx</p>
     <p>precio: xx€</p>
     <button>Comprar</button>`;
 
+    print_elemento('ul_productos_tienda', 'li', contenido_list);
+    print_elemento('ul_productos_tienda', 'li', contenido_list);
+    print_elemento('ul_productos_tienda', 'li', contenido_list);
+    print_elemento('ul_productos_tienda', 'li', contenido_list);
+    print_elemento('ul_productos_tienda', 'li', contenido_list);
+    print_elemento('ul_productos_tienda', 'li', contenido_list);
     print_elemento('ul_productos_tienda', 'li', contenido_list);
 }
 

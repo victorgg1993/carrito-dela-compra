@@ -1,9 +1,31 @@
 @charset "UTF-8";
-section #ul_productos_stock {
+#ul_productos_tienda {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+#ul_productos_tienda li {
+  display: flex;
+  flex-flow: column;
+  margin-right: 2em;
+}
+#ul_productos_tienda li h2 {
+  background-color: violet;
+}
+
+body {
+  background-color: white;
+}
+
+#article_vendedor > h1 {
+  background-color: #f2f3ff;
+  margin: 1em 0em 0em 0em;
+}
+#article_vendedor #ul_productos_stock {
   display: flex;
   flex-flow: column;
 }
-section #ul_productos_stock li {
+#article_vendedor #ul_productos_stock li {
   display: flex;
   flex-flow: row;
   align-items: center;
@@ -12,20 +34,20 @@ section #ul_productos_stock li {
   border-bottom: 1px solid #ecf6ff;
   /* <li> eliminar */
 }
-section #ul_productos_stock li h1 {
+#article_vendedor #ul_productos_stock li h1 {
   display: flex;
   width: 20em;
   font-size: 18px;
   font-weight: unset;
 }
-section #ul_productos_stock li p {
+#article_vendedor #ul_productos_stock li p {
   margin: 0em 2em 0em 3em;
   width: 10em;
 }
-section #ul_productos_stock li input {
+#article_vendedor #ul_productos_stock li input {
   width: 4em;
 }
-section #ul_productos_stock li button {
+#article_vendedor #ul_productos_stock li button {
   margin: 0em 0em 0em 0em;
   padding: 0.4em 0.6em 0.4em 0.6em;
   background-color: #ff6868;
@@ -34,14 +56,14 @@ section #ul_productos_stock li button {
   font-weight: bold;
   border-style: none;
 }
-section #ul_productos_stock li button:hover {
+#article_vendedor #ul_productos_stock li button:hover {
   background-color: #f84646;
 }
-section #ul_producto_stock_add {
+#article_vendedor #ul_producto_stock_add {
   display: flex;
   flex-flow: column;
 }
-section #ul_producto_stock_add li {
+#article_vendedor #ul_producto_stock_add li {
   display: flex;
   flex-flow: row;
   align-items: center;
@@ -50,23 +72,23 @@ section #ul_producto_stock_add li {
   border-bottom: 1px solid #ecf6ff;
   /* <li> añadir */
 }
-section #ul_producto_stock_add li #input_nombre_producto_0 {
+#article_vendedor #ul_producto_stock_add li #input_nombre_producto_0 {
   width: 20em;
 }
-section #ul_producto_stock_add li #input_precio_0 {
+#article_vendedor #ul_producto_stock_add li #input_precio_0 {
   width: 9em;
 }
-section #ul_producto_stock_add li #label_cantidad_add_0 {
+#article_vendedor #ul_producto_stock_add li #label_cantidad_add_0 {
   margin-right: -3em;
 }
-section #ul_producto_stock_add li #input_cantidad_add_0 {
+#article_vendedor #ul_producto_stock_add li #input_cantidad_add_0 {
   width: 5em;
   margin-right: 0em;
 }
-section #ul_producto_stock_add li #p_add_0 {
+#article_vendedor #ul_producto_stock_add li #p_add_0 {
   margin-right: 2em;
 }
-section #ul_producto_stock_add li button {
+#article_vendedor #ul_producto_stock_add li button {
   margin: 0em -0.5em 0em 2em;
   padding: 0.4em 0.6em 0.4em 0.6em;
   width: 6em;
@@ -75,7 +97,7 @@ section #ul_producto_stock_add li button {
   font-weight: bold;
   border-style: none;
 }
-section #ul_producto_stock_add li button {
+#article_vendedor #ul_producto_stock_add li button {
   background-color: #504b46;
 }
 

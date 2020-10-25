@@ -24,7 +24,6 @@ function print_productos_stock(arr_productos_stock) {
     let padre2 = document.createElement('ul');
     padre2.id = "ul_producto_stock_add";
     art_padre.appendChild(padre2);
-    console.log("art_padre", padre2);
 
     let datos = { // con esta estructura de datos solamente pasamos un parámetro, es más flexible
         padre: padre2,
@@ -150,11 +149,8 @@ function listener_add_producto_stock() {
     let padre = document.getElementById('ul_productos_stock');
     let object = leer_producto_stock();
     add_producto_stock(objeto_JSON, object);
-    // console.log("asd: ", objeto_JSON);
-    // console.log("object: ", object);
-    // falta poner el producto en el html
 
-    let datos = {
+    let datos = { // añadir un elemento <li> en el padre <ul>
         padre: padre,
         elemento: object,
         id: padre.childElementCount,
