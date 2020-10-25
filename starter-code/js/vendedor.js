@@ -19,8 +19,15 @@ function print_productos_stock(arr_productos_stock) {
     }
 
     // <li> añadir nuevo producto
+
+    let art_padre = document.getElementById('section_vendedor');
+    let padre2 = document.createElement('ul');
+    padre2.id = "ul_producto_stock_add";
+    art_padre.appendChild(padre2);
+    console.log("art_padre", padre2);
+
     let datos = { // con esta estructura de datos solamente pasamos un parámetro, es más flexible
-        padre: padre,
+        padre: padre2,
         elemento: { name: "nombre producto", price: 0, quantity: 0 },
         texto_btn: "Añadir",
         id: 0,
@@ -134,19 +141,29 @@ function listener_input_cantidad_add() {
     let obj_p = document.getElementById("p_add_0");
     let obj_in_precio = document.getElementById("input_precio_0");
     let obj_in_cantidad = document.getElementById("input_cantidad_add_0");
-
-    console.log("obj_p.innerText :", obj_p.innerText);
-    console.log("obj_in_precio.value :", obj_in_precio.value);
-    console.log("obj_in_cantidad.value :", obj_in_cantidad.value);
-
-    obj_p.innerText = "Total: " + ((obj_in_precio.value * obj_in_cantidad.value) + "€");
+    obj_p.innerText = "Total: " + ((obj_in_precio.value * obj_in_cantidad.value).toFixed(2) + "€");
 }
 
 // To - do
 function listener_add_producto_stock() {
+
+    let padre = document.getElementById('ul_productos_stock');
     let object = leer_producto_stock();
     add_producto_stock(objeto_JSON, object);
+    // console.log("asd: ", objeto_JSON);
+    // console.log("object: ", object);
     // falta poner el producto en el html
+
+    let datos = {
+        padre: padre,
+        elemento: object,
+        id: padre.childElementCount,
+        texto_btn: "Eliminar",
+        lstn_in: listener_input_cantidad,
+        lstn_btn: listener_boton_eliminar_producto_stock
+    };
+
+    pintar_li_producto_stock(datos);
 }
 
 // To - do
@@ -175,14 +192,15 @@ function listener_input_cantidad(evento_input) {
 
 // To - do
 function leer_producto_stock() {
-    let elemenet = document.getElementById("input_producto_stock_0");
-    let name = elemenet.getElementsByTagName("input")[0].value;
-    let precio = elemenet.getElementsByTagName("input")[1].value;
-    let cantidad = elemenet.getElementsByTagName("input")[2].value;
+    let nombre_producto = document.getElementById("input_nombre_producto_0").value;
+    let precio_producto = document.getElementById("input_precio_0").value;
+    let cantidad_producto = document.getElementById("input_cantidad_add_0").value;
+
     return {
-        name: name,
-        price: precio,
-        quantity: cantidad
+        name: nombre_producto,
+        price: parseFloat(precio_producto),
+        quantity: parseInt(cantidad_producto),
+        index: objeto_JSON.length,
     };
 }
 

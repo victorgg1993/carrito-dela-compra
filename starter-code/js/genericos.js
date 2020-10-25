@@ -18,15 +18,17 @@ function print_elemento(padre, hijo, contenido) { // acabará siendo borrado
 }
 
 // Done
-function pintar_article(titulo, id_ul) {
+function pintar_article(titulo, id_ul, id_articulo) {
     let objeto_body = document.querySelector('body');
     let objeto_article = document.createElement('article');
+    objeto_article.id = 'article_' + id_articulo;
 
     let _h1 = document.createElement('h1');
     _h1.innerText = titulo;
     objeto_article.appendChild(_h1);
 
     let seccion = document.createElement('section');
+    seccion.id = 'section_' + id_articulo;
     objeto_article.appendChild(seccion);
 
     let _ul = document.createElement('ul');
