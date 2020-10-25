@@ -1,30 +1,33 @@
 @charset "UTF-8";
-#ul_productos_tienda {
+#article_comprador {
+  border: 1px solid #97a7c4;
+}
+#article_comprador #ul_productos_tienda {
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
 }
-#ul_productos_tienda li {
+#article_comprador #ul_productos_tienda li {
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: flex-end;
   margin: 1em 1em 1em 1em;
   padding: 0.5em 0.5em 0.5em 0.5em;
-  background-color: #aebcc0;
+  background-color: #e1e3e4;
 }
-#ul_productos_tienda li h2 {
+#article_comprador #ul_productos_tienda li h2 {
   width: 10em;
   text-align: center;
   font-weight: 500;
 }
-#ul_productos_tienda li input {
+#article_comprador #ul_productos_tienda li input {
   width: 5em;
 }
-#ul_productos_tienda li #p_precio_producto {
+#article_comprador #ul_productos_tienda li .p_precio_producto {
   margin-top: -0.5em;
 }
-#ul_productos_tienda li button {
+#article_comprador #ul_productos_tienda li button {
   margin: 0em 0em 0em 0em;
   padding: 0.4em 0.6em 0.4em 0.6em;
   background-color: #568f69;
@@ -33,7 +36,7 @@
   font-weight: bold;
   border-style: none;
 }
-#ul_productos_tienda li button:hover {
+#article_comprador #ul_productos_tienda li button:hover {
   background-color: #3a6348;
 }
 
@@ -41,8 +44,11 @@ body {
   background-color: white;
 }
 
+#article_vendedor {
+  border: 1px solid #97a7c4;
+}
 #article_vendedor > h1 {
-  background-color: #f2f3ff;
+  background-color: #f6f9ff;
   margin: 1em 0em 0em 0em;
 }
 #article_vendedor #ul_productos_stock {
@@ -55,7 +61,7 @@ body {
   align-items: center;
   justify-content: space-around;
   margin-right: 3em;
-  border-bottom: 1px solid #ecf6ff;
+  border-bottom: 1px solid #b5cfff;
   /* <li> eliminar */
 }
 #article_vendedor #ul_productos_stock li h1 {
