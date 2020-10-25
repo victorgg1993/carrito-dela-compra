@@ -46,7 +46,7 @@ function pintar_li_producto_stock(datos) {
         case 'Añadir': // Si es añadir, el nombre se puede cambiar
             let casilla_nombre = document.createElement('input');
             casilla_nombre.placeholder = "Nombre producto";
-            lista.id = 'input_producto_stock_' + datos.id;
+            casilla_nombre.id = 'input_nombre_producto_' + datos.id;
             lista.appendChild(casilla_nombre);
             break;
 
@@ -62,6 +62,8 @@ function pintar_li_producto_stock(datos) {
         case 'Añadir': // Si es añadir, el precio es editable
             let in_precio = document.createElement('input');
             in_precio.placeholder = "Precio €";
+            in_precio.id = ("input_precio_" + datos.id);
+            in_precio.addEventListener('change', datos.lstn_in);
             lista.appendChild(in_precio);
             break;
 
@@ -75,11 +77,24 @@ function pintar_li_producto_stock(datos) {
 
     let nombre_cantidad = document.createElement('label');
     nombre_cantidad.innerText = `Cantidad:`;
+
+    if (datos.texto_btn == 'Eliminar') {
+        nombre_cantidad.id = ("label_cantidad_" + datos.id);
+    }
+    else {
+        nombre_cantidad.id = ("label_cantidad_add_" + datos.id);
+    }
     lista.appendChild(nombre_cantidad);
 
     // casilla (editable) de cantidad
     let casilla_cantidad = document.createElement('input');
-    casilla_cantidad.id = ("input_cantidad_" + datos.id);
+
+    if (datos.texto_btn == 'Eliminar') {
+        casilla_cantidad.id = ("input_cantidad_" + datos.id);
+    }
+    else {
+        casilla_cantidad.id = ("input_cantidad_add_" + datos.id);
+    }
     casilla_cantidad.placeholder = "Cantidad";
 
     if (datos.texto_btn == 'Eliminar') {
@@ -92,7 +107,13 @@ function pintar_li_producto_stock(datos) {
     // casilla precio final
     let precio_total = document.createElement('p');
     precio_total.innerText = `Total: ${(datos.elemento.price * datos.elemento.quantity).toFixed(2)}€`;
-    precio_total.id = ("p_total_" + datos.id);
+
+    if (datos.texto_btn == 'Eliminar') {
+        precio_total.id = ("p_total_" + datos.id);
+    } else {
+        precio_total.id = ("p_add_" + datos.id);
+    }
+
     lista.appendChild(precio_total);
 
     // botón eliminar
@@ -108,8 +129,18 @@ function pintar_li_producto_stock(datos) {
     boton_add_o_eliminar.addEventListener('click', datos.lstn_btn);
 }
 
-// No usar
-function listener_input_cantidad_add() {} // No usar
+// Done
+function listener_input_cantidad_add() {
+    let obj_p = document.getElementById("p_add_0");
+    let obj_in_precio = document.getElementById("input_precio_0");
+    let obj_in_cantidad = document.getElementById("input_cantidad_add_0");
+
+    console.log("obj_p.innerText :", obj_p.innerText);
+    console.log("obj_in_precio.value :", obj_in_precio.value);
+    console.log("obj_in_cantidad.value :", obj_in_cantidad.value);
+
+    obj_p.innerText = "Total: " + ((obj_in_precio.value * obj_in_cantidad.value) + "€");
+}
 
 // To - do
 function listener_add_producto_stock() {
