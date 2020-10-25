@@ -1,3 +1,4 @@
+@charset "UTF-8";
 #ul_productos_stock {
   display: flex;
   flex-flow: column;
@@ -9,6 +10,8 @@
   justify-content: space-around;
   margin-right: 3em;
   border-bottom: 1px solid #ecf6ff;
+  /* <li> eliminar */
+  /* <li> añadir */
 }
 #ul_productos_stock li h1 {
   display: flex;
@@ -27,6 +30,7 @@
   margin: 0em 0em 0em 0em;
   padding: 0.4em 0.6em 0.4em 0.6em;
   background-color: #ff6868;
+  width: 6em;
   color: #fafafa;
   font-weight: bold;
   border-style: none;
@@ -34,9 +38,23 @@
 #ul_productos_stock li button:hover {
   background-color: #f84646;
 }
+#ul_productos_stock li #input_nombre_producto_0 {
+  width: 20em;
+}
+#ul_productos_stock li #input_precio_0 {
+  width: 9em;
+}
+#ul_productos_stock li #label_cantidad_add_0 {
+  margin-right: -3em;
+}
+#ul_productos_stock li #input_cantidad_add_0 {
+  width: 5em;
+  margin-right: -4em;
+}
 #ul_productos_stock li #button_add_0 {
-  margin: 0em 0em 0em 0em;
+  margin: 0em -1.2em 0em -2.2em;
   padding: 0.4em 0.6em 0.4em 0.6em;
+  width: 6em;
   background-color: #2c2926;
   color: #fafafa;
   font-weight: bold;
@@ -44,10 +62,6 @@
 }
 #ul_productos_stock li #button_add_0:hover {
   background-color: #504b46;
-}
-#ul_productos_stock li div {
-  display: flex;
-  border: 1px solid #d8ff4a;
 }
 
 /*# sourceMappingURL=style.css.map */
