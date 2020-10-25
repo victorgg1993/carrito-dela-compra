@@ -7,29 +7,37 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    margin-right: 2em;
-    margin-bottom: 1em;
-    padding: 0em 0em 0.5em 0.5em;
+    justify-content: flex-end;
+    margin: 1em 1em 1em 1em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
     background-color: rgb(174, 188, 192);
 
-    
     h2 {
       width: 10em;
       text-align: center;
+      font-weight: 500;
     }
 
-    input{
+    input {
       width: 5em;
+    }
+
+    #p_precio_producto {
+      margin-top: -0.5em;
     }
 
     button {
       margin: 0em 0em 0em 0em;
       padding: 0.4em 0.6em 0.4em 0.6em;
-      background-color: rgb(86, 143, 105);
+      background-color: $color-verde;
       width: 6em;
-      color: rgb(255, 255, 255);
+      color: $color-blanco-perla;
       font-weight: bold;
       border-style: none;
+    }
+
+    button:hover {
+      background-color: $color-verde-oscuro;
     }
   }
 }
