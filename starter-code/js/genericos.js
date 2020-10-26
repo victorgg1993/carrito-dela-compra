@@ -18,7 +18,7 @@ function print_elemento(padre, hijo, id_hijo, contenido) { // acabará siendo bo
 
 // Done
 function pintar_article(titulo, id_ul, id_articulo) {
-    let objeto_body = document.querySelector('body');
+    let objeto_body = document.getElementsByTagName('body')[0];
     let objeto_article = document.createElement('article');
     objeto_article.id = 'article_' + id_articulo;
 
@@ -35,9 +35,4 @@ function pintar_article(titulo, id_ul, id_articulo) {
     seccion.appendChild(_ul);
 
     objeto_body.appendChild(objeto_article);
-}
-
-// To - do ( los usará el vendedor y el manager para ordenar los productos)
-function sort_producto() {
-
 }
