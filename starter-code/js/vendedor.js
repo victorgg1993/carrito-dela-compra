@@ -23,7 +23,6 @@ function print_productos_stock(arr_productos_stock) {
 
     let art_padre = document.getElementById('section_vendedor');
     let padre2 = document.getElementById('ul_producto_stock_add');
-    console.log(padre2);
     if (padre2 == null) // si no existe, lo creamos y añadimos
     {
         padre2 = document.createElement('ul');
@@ -37,7 +36,6 @@ function print_productos_stock(arr_productos_stock) {
             lstn_in: listener_input_cantidad_add,
             lstn_btn: listener_add_producto_stock
         };
-
         pintar_li_producto_stock(datos); // <li> para añadir un producto
     }
 
