@@ -3,7 +3,7 @@ function print_productos_stock(arr_productos_stock) {
 
     // <li> de cada producto en stock
     let padre = document.getElementById('ul_productos_stock');
-    padre.innerHTML = ''; // limpiamos
+    padre.innerHTML = '';
 
     for (let i = 0; i < arr_productos_stock.length; i++) {
 
@@ -22,20 +22,26 @@ function print_productos_stock(arr_productos_stock) {
     // <li> añadir nuevo producto
 
     let art_padre = document.getElementById('section_vendedor');
-    let padre2 = document.createElement('ul');
-    padre2.id = "ul_producto_stock_add";
-    art_padre.appendChild(padre2);
+    let padre2 = document.getElementById('ul_producto_stock_add');
+    console.log(padre2);
+    if (padre2 == null) // si no existe, lo creamos y añadimos
+    {
+        padre2 = document.createElement('ul');
+        padre2.id = "ul_producto_stock_add";
+        art_padre.appendChild(padre2);
+        let datos = { // con esta estructura de datos solamente pasamos un parámetro, es más flexible
+            padre: padre2,
+            elemento: { name: "nombre producto", price: 0, quantity: 0 },
+            texto_btn: "Añadir",
+            id: 0,
+            lstn_in: listener_input_cantidad_add,
+            lstn_btn: listener_add_producto_stock
+        };
 
-    let datos = { // con esta estructura de datos solamente pasamos un parámetro, es más flexible
-        padre: padre2,
-        elemento: { name: "nombre producto", price: 0, quantity: 0 },
-        texto_btn: "Añadir",
-        id: 0,
-        lstn_in: listener_input_cantidad_add,
-        lstn_btn: listener_add_producto_stock
-    };
+        pintar_li_producto_stock(datos); // <li> para añadir un producto
+    }
 
-    pintar_li_producto_stock(datos); // <li> para añadir un producto
+
 }
 
 // Done. Pinta una <li> de producto en stock o un <li> para añadir producto en stock

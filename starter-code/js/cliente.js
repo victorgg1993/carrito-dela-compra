@@ -26,8 +26,6 @@ function listener_change_input_cantidad(evento_input) {
     disponible = disponible.textContent;
     disponible = parseInt(disponible[0] + disponible[1]);
 
-    console.log("cantidad: ", disponible);
-
     let precio_total = (objeto_JSON[indice].price * unidades.value).toFixed(2);
     obj_p.innerText = `precio: ${precio_total}€`;
 }
@@ -39,10 +37,6 @@ function add_productos_tienda(evento_boton) {
     let disponible = document.getElementById("p_producto_disponible_" + indice);
     let obj_p = document.getElementById("p_producto_" + indice);
 
-    console.log("disponible:", disponible);
-    console.log("objeto_JSON[indice].quantity: ", objeto_JSON[indice].quantity);
-    console.log("input_producto_0: ", input.value);
-
     if (input.value >= objeto_JSON[indice].quantity) {
         document.getElementById(`li_producto_tienda_${indice}`).remove(); // rm <li>
         objeto_JSON.splice(indice, 1);
@@ -50,8 +44,6 @@ function add_productos_tienda(evento_boton) {
     else {
         // descontar
         objeto_JSON[indice].compras += parseInt(input.value);
-        console.log("compras: ", objeto_JSON[indice].compras);
-
         objeto_JSON[indice].quantity -= input.value;
         disponible.textContent = `${objeto_JSON[indice].quantity} uds. disponibles`;
         disponible.value = objeto_JSON[indice].quantity;
@@ -62,7 +54,6 @@ function add_productos_tienda(evento_boton) {
 
     print_productos_ranking(objeto_JSON); // después de comprar, actualizamos el ranking
     print_productos_stock(objeto_JSON); // después de comprar, actualizamos el stock
-
 }
 
 
