@@ -1,3 +1,11 @@
+
+| Nombre  | Tarea    |
+| ------: | -----------: |
+| Prodan  |  JS |
+| Víctor  |  CSS + JS | 
+| Youssef |  JS |
+
+
 # DOM | The Shopping Cart
 
 ### Introducción
