@@ -1,0 +1,22 @@
+#article_manager {
+  ul {
+    display: flex;
+    flex-flow: column;
+    li {
+      display: flex;
+      flex-flow: row;
+      align-items: center;
+      border-bottom: 1px solid $color-borde-li;
+
+      h1{
+
+        font-size: 17px;
+        margin-right: 1em;
+      }
+
+      p{
+        font-size: 17px;
+      }
+    }
+  }
+}

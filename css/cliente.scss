@@ -1,0 +1,47 @@
+#article_comprador {
+  border: 1px solid $color-borde-ul;
+
+  #ul_productos_tienda {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+
+    li {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: flex-end;
+      margin: 1em 1em 1em 1em;
+      padding: 0.5em 0.5em 0.5em 0.5em;
+      background-color: $color-fondo-articulo;
+
+      h2 {
+        width: 10em;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      input {
+        width: 5em;
+      }
+
+      .p_precio_producto {
+        margin-top: -0.5em;
+      }
+
+      button {
+        margin: 0em 0em 0em 0em;
+        padding: 0.4em 0.6em 0.4em 0.6em;
+        background-color: $color-verde;
+        width: 6em;
+        color: $color-blanco-perla;
+        font-weight: bold;
+        border-style: none;
+      }
+
+      button:hover {
+        background-color: $color-verde-oscuro;
+      }
+    }
+  }
+}
