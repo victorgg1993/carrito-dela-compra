@@ -3,8 +3,6 @@
 */
 
 
-
-
 // Pinta un elemento (hijo = li, por ejemplo)
 // en el elemento padre ( padre = ul, por ejemplo )
 // con el contenido que le das ( contenido = '<button>Soy un botón</button>')

@@ -40,15 +40,28 @@
   background-color: #3a6348;
 }
 
-body {
-  background-color: white;
+#article_manager ul {
+  display: flex;
+  flex-flow: column;
+}
+#article_manager ul li {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  border-bottom: 1px solid #b5cfff;
+}
+#article_manager ul li h1 {
+  font-size: 17px;
+  margin-right: 1em;
+}
+#article_manager ul li p {
+  font-size: 17px;
 }
 
 #article_vendedor {
   border: 1px solid #97a7c4;
 }
 #article_vendedor > h1 {
-  background-color: #f6f9ff;
   margin: 1em 0em 0em 0em;
 }
 #article_vendedor #ul_productos_stock {
