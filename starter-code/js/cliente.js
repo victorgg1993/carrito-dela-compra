@@ -61,6 +61,8 @@ function add_productos_tienda(evento_boton) {
     }
 
     print_productos_ranking(objeto_JSON); // después de comprar, actualizamos el ranking
+    print_productos_stock(objeto_JSON); // después de comprar, actualizamos el stock
+
 }
 
 

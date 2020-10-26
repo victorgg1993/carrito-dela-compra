@@ -3,6 +3,7 @@ function print_productos_stock(arr_productos_stock) {
 
     // <li> de cada producto en stock
     let padre = document.getElementById('ul_productos_stock');
+    padre.innerHTML = ''; // limpiamos
 
     for (let i = 0; i < arr_productos_stock.length; i++) {
 
