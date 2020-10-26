@@ -15,6 +15,8 @@ function print_productos_ranking(arr_productos_tienda) {
         }
     }
 
+
+    arr_productos = arr_productos.sort( ( a,b ) =>  b.compras - a.compras );
     console.log("arr productos: ", arr_productos);
 
     for (let i = 0; i < arr_productos.length; i++) {
