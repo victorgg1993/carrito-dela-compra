@@ -86,8 +86,7 @@ function pintar_li_producto_stock(datos) {
 
     if (datos.texto_btn == 'Eliminar') {
         nombre_cantidad.id = ("label_cantidad_" + datos.id);
-    }
-    else {
+    } else {
         nombre_cantidad.id = ("label_cantidad_add_" + datos.id);
     }
     lista.appendChild(nombre_cantidad);
@@ -97,8 +96,7 @@ function pintar_li_producto_stock(datos) {
 
     if (datos.texto_btn == 'Eliminar') {
         casilla_cantidad.id = ("input_cantidad_" + datos.id);
-    }
-    else {
+    } else {
         casilla_cantidad.id = ("input_cantidad_add_" + datos.id);
     }
     casilla_cantidad.placeholder = "Cantidad";
@@ -148,18 +146,20 @@ function listener_add_producto_stock() {
 
     let padre = document.getElementById('ul_productos_stock');
     let object = leer_producto_stock();
-    add_producto_stock(objeto_JSON, object);
+    if (object != false) {
+        add_producto_stock(objeto_JSON, object);
 
-    let datos = { // añadir un elemento <li> en el padre <ul>
-        padre: padre,
-        elemento: object,
-        id: padre.childElementCount,
-        texto_btn: "Eliminar",
-        lstn_in: listener_input_cantidad,
-        lstn_btn: listener_boton_eliminar_producto_stock
-    };
+        let datos = { // añadir un elemento <li> en el padre <ul>
+            padre: padre,
+            elemento: object,
+            id: padre.childElementCount,
+            texto_btn: "Eliminar",
+            lstn_in: listener_input_cantidad,
+            lstn_btn: listener_boton_eliminar_producto_stock
+        };
 
-    pintar_li_producto_stock(datos);
+        pintar_li_producto_stock(datos);
+    }
 }
 
 // To - do
@@ -192,12 +192,17 @@ function leer_producto_stock() {
     let precio_producto = document.getElementById("input_precio_0").value;
     let cantidad_producto = document.getElementById("input_cantidad_add_0").value;
 
-    return {
-        name: nombre_producto,
-        price: parseFloat(precio_producto),
-        quantity: parseInt(cantidad_producto),
-        index: objeto_JSON.length,
-    };
+    if (nombre_producto == "" || precio_producto == "" || cantidad_producto == "") {
+        alert("Hay un campo vacio");
+        return false;
+    } else {
+        return {
+            name: nombre_producto,
+            price: parseFloat(precio_producto),
+            quantity: parseInt(cantidad_producto),
+            index: objeto_JSON.length,
+        };
+    }
 }
 
 // To - do
