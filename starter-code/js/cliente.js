@@ -22,7 +22,7 @@ function listener_change_input_cantidad(evento_input) {
     let obj_p = document.getElementById("p_producto_" + indice);
     let disponible = document.getElementById("p_producto_disponible_" + indice);
     let unidades = document.getElementById("input_producto_" + indice);
-    
+
     disponible = disponible.textContent;
     disponible = parseInt(disponible[0] + disponible[1]);
 
@@ -49,6 +49,9 @@ function add_productos_tienda(evento_boton) {
     }
     else {
         // descontar
+        objeto_JSON[indice].compras += parseInt(input.value);
+        console.log("compras: ", objeto_JSON[indice].compras);
+
         objeto_JSON[indice].quantity -= input.value;
         disponible.textContent = `${objeto_JSON[indice].quantity} uds. disponibles`;
         disponible.value = objeto_JSON[indice].quantity;
@@ -57,6 +60,7 @@ function add_productos_tienda(evento_boton) {
         obj_p.innerText = `precio: ${objeto_JSON[indice].price}€`;
     }
 
+    print_productos_ranking(objeto_JSON); // después de comprar, actualizamos el ranking
 }
 
 

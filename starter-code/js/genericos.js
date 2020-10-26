@@ -9,11 +9,11 @@
 // en el elemento padre ( padre = ul, por ejemplo )
 // con el contenido que le das ( contenido = '<button>Soy un botón</button>')
 
-function print_elemento(padre, hijo, id, contenido) { // acabará siendo borrado
+function print_elemento(padre, hijo, id_hijo, contenido) { // acabará siendo borrado
     let objeto_padre = document.getElementById(padre);
 
     let objeto_hijo = document.createElement(hijo);
-    objeto_hijo.id = id;
+    objeto_hijo.id = id_hijo;
     objeto_hijo.innerHTML = contenido;
     objeto_padre.appendChild(objeto_hijo);
 }
